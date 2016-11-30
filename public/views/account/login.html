@@ -1,0 +1,12 @@
+<h2>Login</h2>
+
+<form ng-submit="submitLogin()">
+    <div>
+        <label for="username">User Name:</label>
+        <input id="userName" type="text" ng-model="loginForm.userName" />
+        <label for="password">Password:</label>
+        <input id="password" type="password"  ng-model="loginForm.password" />
+    </div>
+    <button type="submit">Login</button>
+</form>
+<a href="#signup">Create Account</a>

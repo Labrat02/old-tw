@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="triviaWorldApp">
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <title>Trivia World</title>
+    </head>
+    <body>
+        <div class="container" ng-controller="HomeController">
+            <!-- Templatize -->
+            <h1>Welcome to Trivia World</h1>
+            
+        </div>
+        <div class="container" ng-controller="SignUpController">
+
+        </div>
+        <div class="container" ng-controller="TriviaListController">
+            <h1>Manage Trivia Question</h1>
+            
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Question<th>
+                        <th>Answers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="question in triviaQuestions" ng-dblclick="edit(question)">
+                        <td>{{question.question}}</td>
+                        <td>
+                            <ul class="list-unstyled">
+                                <li ng-repeat="answer in question.answers">
+                                    <input type="radio" name="answerOpt_{{question.id}}" ng-checked="(answer.selected)" ng-value="answer.text" />
+                                    {{answer.text}}
+                                    {{answer.isEdit}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <h2>New Question {{editId}}</h2>
+
+                <input ng-model="question" />
+                <input ng-model="answer" />
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js" type="text/javascript" ></script>
+        <script src="app.js" type="text/javascript" ></script>
+        <script src="controllers/TriviaListController.js" type="text/javascript" ></script>
+        <script src="controllers/HomeController.js" type="text/javascript" ></script>
+        <script src="controllers/SignUpController.js" type="text/javascript" ></script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<h2>Quiz - {{remainingQuestions}} remaining</h2>
+<form ng-submit="submitAnswer()" ng-show="currentQuestion">
+    <h3>{{currentQuestion.question}}</h3>
+    <ul class="list-unstyled">
+        <li ng-repeat="answerOption in currentQuestion.answers">
+            <input type="radio" id="radOpt_{{answerOption._id}}" name="answerOpt_{{currentQuestion._id}}" ng-model="formData.answer" ng-value="answerOption._id" />
+            <label for="radOpt_{{answerOption._id}}">{{answerOption.text}}</label>
+        </li>
+
+        <button type="submit">Submit</button>
+    </ul>
+</form>
+<div class="" ng-show="remainingQuestions == 0">
+    <h3>All Questions Complete</h3>
+    <a href="#/">Return Home</a>
+</div>

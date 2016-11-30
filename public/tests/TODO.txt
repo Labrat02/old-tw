@@ -1,0 +1,5 @@
+Tests Needed:
+
+User - unique emails
+
+User Answers - Cannot contain question user created, unique questions
