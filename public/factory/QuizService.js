@@ -6,7 +6,6 @@ angular.module('triviaWorldApp')
                 var deferred = $q.defer();
                 $http.get('/server/getNextQuestion/' + $rootScope.currentUser._id + '/')
                     .success(function(response){
-                        //$location.path('/quiz/question/' + response);
                         deferred.resolve(response);
                     })
                     .error(function(err, status){
@@ -18,7 +17,6 @@ angular.module('triviaWorldApp')
                 var deferred = $q.defer();
                 $http.post('/server/saveAnswer/' + $rootScope.currentUser._id + '/', answer)
                     .success(function(response){
-                        //$location.path('/quiz/question/' + response);
                         deferred.resolve(response);
                     })
                     .error(function(err, status){
@@ -26,7 +24,17 @@ angular.module('triviaWorldApp')
                     });
                 return deferred.promise;
             },
-            getRandomQuestion: function(){},
+            getAllTags: function(){
+                var deferred = $q.defer();
+                $http.get('/server/getAllTags/')
+                    .success(function(response){
+                        deferred.resolve(response);
+                    })
+                    .error(function(err, status){
+                        deferred.reject('');
+                    });
+                return deferred.promise;
+            },
             addQuestion: function(){},
             removeQuestion: function(){},
             updateQuestion: function(){}

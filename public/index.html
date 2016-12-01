@@ -33,7 +33,9 @@
         </div>
         <footer class="footer">
             <div class="container">
-                <p class="text-muted">Logged in as: {{currentUser.userName}} - {{currentUser.emailAddress}}</p>
+                <p class="text-muted" ng-show="currentUser">
+                    Logged in as: {{currentUser.userName}} - {{currentUser.emailAddress}} - 
+                    <a href="#/">Sign Out</a></p>
             </div>
         </footer>
 
@@ -47,7 +49,9 @@
         <script src="controllers/ManageController.js" type="text/javascript" ></script>
         <script src="controllers/SignUpController.js" type="text/javascript" ></script>
         <script src="controllers/QuizController.js" type="text/javascript" ></script>
+        <script src="controllers/StatsController.js" type="text/javascript" ></script>
         <script src="factory/UserService.js" type="text/javascript" ></script>
         <script src="factory/QuizService.js" type="text/javascript" ></script>
+        <script src="factory/ReportService.js" type="text/javascript" ></script>
     </body>
 </html>

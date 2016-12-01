@@ -6,7 +6,7 @@ var triviaWorldApp = angular.module('triviaWorldApp', ['ngResource', 'ngRoute'])
             controller: "HomeController"
         })
         .when('/manage', {
-            templateUrl: 'views/account/manage.html',
+            templateUrl: 'views/manage/index.html',
             controller: "ManageAccountController"
         })
         .when('/login', {
@@ -20,6 +20,10 @@ var triviaWorldApp = angular.module('triviaWorldApp', ['ngResource', 'ngRoute'])
         .when('/quiz', {
             templateUrl: 'views/quiz/index.html',
             controller: "QuizController"
+        })
+        .when('/highscores', {
+            templateUrl: 'views/stats/highscores.html',
+            controller: "StatsController"
         })
         .otherwise({
             redirectTo: '/login'

@@ -15,8 +15,9 @@ module.exports = (function(){
         userName: 'Default2',
         password: 'Password2',
         emailAddress: 'collin2@yeadongroup.com',
-        answers: [{questionId: "1", answer:"1"}]
+        answers: [{questionId: "1", answer:"1", correct:false}]
     }];
+
     var triviaQuestions = [{
         _id: "1",
         question: 'What kind of bat !POW! crazy are you?',
@@ -25,6 +26,8 @@ module.exports = (function(){
             {_id: "2",text: 'Heath Ledger as Joker'},
             {_id: "3",text: 'Danny Devito as Penguin'},
         ],
+        answerKey: "2",
+        tags: ['candy', 'superheroes'],
         userId: "1",
     },{
         _id: "2",
@@ -35,6 +38,8 @@ module.exports = (function(){
             {_id: "6",text: 'Three'},
             {_id: "7",text: 'The world will never know'},
         ],
+        answerKey: "6",
+        tags: ['candy', 'earth'],
         userId: "1",
     },{
         _id: "3",
@@ -44,6 +49,8 @@ module.exports = (function(){
             {_id: "9",text: 'Some time in the next millenium.'},
             {_id: "10",text: 'I could tell you but that would spoil the surprise.'},
         ],
+        answerKey: "10",
+        tags: ['earth', 'trees'],
         userId: "1",
     },{
         _id: "4",
@@ -53,6 +60,8 @@ module.exports = (function(){
             {_id: "12",text: 'A frog clearly hits his butt when he hops.'},
             {_id: "13",text: 'I could tell you but that would spoil the surprise.'},
         ],
+        answerKey: "12",
+        tags: ['earth', 'bears', 'trees'],
         userId: "2",
     }];
 

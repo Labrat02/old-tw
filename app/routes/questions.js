@@ -12,16 +12,6 @@ module.exports = function(app, env){
 
     });
     
-    app.post('/server/saveAnswer/:userId/', function(req, res){
-        var userId = req.params.userId;
-        //db.users.find({_id: 2}, function(err, users) {console.log(users)});
-        db.users.update({_id: userId}, {$addToSet: {answers: req.body}}, function(err, updObj){
-            console.log(updObj);
-            res.json(updObj);
-        });
-
-    });
-
     app.get('/server/getNextQuestion/:userId/', function(req, res){
         var userId = req.params.userId;
         // db.users.find({}, function(err,users){
@@ -48,6 +38,8 @@ module.exports = function(app, env){
                     if (questions.length) {
                         var randomRecordIndx = Math.floor((Math.random() * questions.length));
                         res.json({matches: questions.length, question: questions[randomRecordIndx]});
+                    } else {
+                        res.json(null);
                     }
                 });
             } else {
@@ -59,14 +51,15 @@ module.exports = function(app, env){
         
 
     });
-
-    app.post('/server/login', function(req, res){
-        var userName = req.body.userName;
-        var password = req.body.password;
-
-        db.users.findOne({userName:userName, password: password}, function(err, user){
-            res.json(user);
-        });
-
+    app.get('/server/getAllTags', function(req, res){
+        db.questions.aggregate( 
+            {$project: {_id:0,tags:1}},
+            {$unwind:'$tags'},
+            {$group: {_id: 'distinct', allTags: {$addToSet:'$tags'}}},
+            function(err, result){
+                console.log(result);
+                res.json(result);
+            }
+        )
     });
 }

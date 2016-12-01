@@ -1,15 +1,34 @@
-<h2>Quiz - {{remainingQuestions}} remaining</h2>
+<h2>Quiz <span ng-show="remainingQuestions && remainingQuestions > 0"> - {{remainingQuestions}} remaining</span></h2>
+
+<input id="allTags" type="checkbox"></input><label for="allTags">All Tags</label>
+<div>
+    <ul>
+        <li ng-repeat="tag in  tagList">
+            {{tag}}
+        </li>
+    </ul>
+</div>
+
 <form ng-submit="submitAnswer()" ng-show="currentQuestion">
+
     <h3>{{currentQuestion.question}}</h3>
     <ul class="list-unstyled">
         <li ng-repeat="answerOption in currentQuestion.answers">
             <input type="radio" id="radOpt_{{answerOption._id}}" name="answerOpt_{{currentQuestion._id}}" ng-model="formData.answer" ng-value="answerOption._id" />
             <label for="radOpt_{{answerOption._id}}">{{answerOption.text}}</label>
         </li>
+        <div class="text-muted">
+            <span ng-repeat="tag in currentQuestion.tags">
+                {{tag}}
+            </span>
+            
+            <a href="">Report Question</a>
 
+        </div>
         <button type="submit">Submit</button>
     </ul>
 </form>
+
 <div class="" ng-show="remainingQuestions == 0">
     <h3>All Questions Complete</h3>
     <a href="#/">Return Home</a>

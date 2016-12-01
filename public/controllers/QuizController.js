@@ -21,15 +21,17 @@ angular.module('triviaWorldApp')
             }
         });
 
-
+        quizService.getAllTags().then(function(data){
+            if (!data) {
+                $scope.tagList = [];
+            } else {
+                $scope.tagList = data[0].allTags;
+            }
+        });
 
         $scope.submitAnswer = function(){
-            debugger;
             quizService.submitAnswer($scope.formData).then(function(data){
-                //$scope.currentUser.answers = data;
-
                 console.log(data);
-
                 $location.path('/quiz/');
             }); 
         }
