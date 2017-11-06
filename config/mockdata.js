@@ -1,7 +1,7 @@
 
 module.exports = (function(){
     var mongojs = require('mongojs');
-    var db = mongojs('triviaWorld', ['questions', 'users']);
+    var db = mongojs('mongo-dev/triviaWorld', ['questions', 'users']);
 
     //mock data initial setup
     var userData = [{
