@@ -15,7 +15,7 @@ mockData.init();
 app.use(express.static(__dirname + "/public"));
 
 var env = {
-    db: mongojs('triviaWorld', ['questions', 'users']),
+    db: mongojs('mongo-dev/triviaWorld', ['questions', 'users']),
     routesPath: './app/routes/'
 }
 require('./app/routes')(app, env);
